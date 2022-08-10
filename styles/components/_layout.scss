@@ -1,0 +1,49 @@
+.layout {
+  width: $width-layout;
+  height: $height-layout;
+  margin: $gmd;
+
+  .header,
+  .footer {
+    @include flex;
+    height: $height-header;
+    width: $width-layout;
+    background-color: $white;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+
+    .line {
+      content: " ";
+      border-bottom: $border;
+      flex: 1;
+      margin: $gmd 0 0 $gmd;
+    }
+
+    h1 {
+      font-weight: $thin;
+    }
+
+    h4 {
+      padding: 0 $gsm;
+    }
+  }
+
+  main {
+    width: calc(100% - #{$width-nav});
+    margin: $height-header 0 $gmd $width-nav;
+    padding-top: $gmd;
+  }
+
+  .footer {
+    padding: 0.5 0 1rem;
+    top: auto;
+    bottom: 0;
+    height: 3rem;
+
+    .line {
+      margin-left: 0;
+      margin-top: 0.2rem;
+    }
+  }
+}

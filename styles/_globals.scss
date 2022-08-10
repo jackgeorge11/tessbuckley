@@ -1,9 +1,14 @@
+@use "sass:map";
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: $font-family;
+  letter-spacing: -0.03rem;
+  background-color: $white;
+  color: $black;
+  font-weight: $regular;
 }
 
 a {
@@ -15,12 +20,54 @@ a {
   box-sizing: border-box;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@each $k, $v in $font-sizes {
+  #{$k},
+  .#{$k} {
+    font-size: $v;
+    font-weight: $regular;
+    margin: 0;
   }
-  body {
-    color: white;
-    background: black;
+}
+
+@each $k, $v in $font-weights {
+  .#{$k} {
+    font-weight: $v;
   }
-} */
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  font-weight: $thick;
+  transition: all 0.15s;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.--muted {
+  opacity: 0.35;
+}
+
+.palette {
+  display: flex;
+  .circle {
+    content: " ";
+    border-radius: 1000px;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-left: 0.2rem;
+    border: 1px solid black;
+  }
+}
+
+// @media (prefers-color-scheme: dark) {
+//   html {
+//     color-scheme: dark;
+//   }
+//   body {
+//     color: white;
+//     background: black;
+//   }
+// }

@@ -1,0 +1,51 @@
+.ethics-of-ai {
+  @include flex($jc: flex-end, $ai: flex-start);
+  flex-direction: column;
+
+  .blog-post {
+    width: 100%;
+    border-top: $border;
+    border-bottom: $border;
+    height: auto;
+    padding: $gsm 0;
+    margin: $gsm 0;
+    cursor: pointer;
+    overflow: hidden;
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      a {
+        width: fit-content;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    h4 {
+      max-height: 0;
+      transition: all 0.3s;
+      font-size: 1rem;
+      overflow: hidden;
+      opacity: 0;
+
+      a {
+        display: inline;
+        font-size: inherit;
+      }
+
+      &.is--active {
+        max-height: 24rem;
+        margin: 0.5rem 0;
+        opacity: 1;
+      }
+    }
+
+    &:hover {
+      background-color: $highlight;
+    }
+  }
+}

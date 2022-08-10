@@ -1,0 +1,27 @@
+nav {
+  position: fixed;
+  top: $height-header;
+  height: 100%;
+  width: $width-nav;
+  max-width: 18rem;
+  padding: $gmd $padding-nav 0 0;
+
+  h1 {
+    font-size: $md;
+    margin: 0 0 $glg 0;
+    font-weight: $thin;
+  }
+
+  a {
+    width: fit-content;
+    display: block;
+    font-size: $sm;
+    &.disabled {
+      text-decoration: underline;
+    }
+  }
+
+  p {
+    margin-top: 1.5rem;
+  }
+}
