@@ -33,7 +33,11 @@ export default function Index({ releases, events, blurb }) {
         <div className="events-header">
           <h3>Upcoming Events</h3>
           <p>
-            (<a href="/music/events">see all events</a>)
+            (
+            <Link href="/music/events" passHref={true}>
+              <a>see all events</a>
+            </Link>
+            )
           </p>
         </div>
         <div className="events-list">
