@@ -34,7 +34,7 @@ export default function Layout({ children, header, className }) {
       <main className={className}>{children}</main>
       <div className="footer">
         <div className="line"></div>
-        <h4 className="--muted">Home</h4>
+        {/* <h4 className="--muted">Home</h4> */}
       </div>
     </div>
   );
