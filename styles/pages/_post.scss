@@ -1,0 +1,46 @@
+.post-page {
+  padding-bottom: $gxxlg;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  * {
+    width: 100%;
+  }
+
+  h1 {
+    margin: $gxlg 0;
+
+    &.title {
+      margin: 0;
+    }
+  }
+
+  h2 {
+    margin: $glg 0 $gsm;
+  }
+
+  p {
+    font-size: $sm;
+    margin: $glg 0;
+
+    &.accreditation {
+      margin: 0 0 $gmd;
+    }
+
+    .divider {
+      margin: 0 $gsm;
+    }
+  }
+
+  img {
+    width: auto;
+    max-width: 100%;
+    max-height: 80vh;
+    padding: $gsm;
+  }
+
+  .references {
+    margin-top: $gxlg;
+  }
+}

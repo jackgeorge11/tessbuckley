@@ -1,0 +1,28 @@
+.publications {
+  display: flex;
+  flex-wrap: wrap;
+
+  .publication {
+    font-size: $md;
+    text-indent: -$gxlg;
+    font-size: 1rem;
+    padding: 0 calc(#{$glg} - #{$border-width}) $gxlg $gxlg;
+    width: 50%;
+    text-align: justify;
+    text-justify: distribute;
+    border-right: $border;
+
+    p {
+      font-size: inherit;
+    }
+
+    &.right {
+      padding: 0 0 $gxlg #{$gxlg + $glg};
+      border-right: none;
+    }
+
+    @include media {
+      width: 100%;
+    }
+  }
+}

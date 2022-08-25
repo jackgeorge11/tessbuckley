@@ -2,15 +2,17 @@
   @include flex($jc: flex-end, $ai: flex-start);
   flex-direction: column;
 
-  .blog-post {
+  .post-preview {
     width: 100%;
     border-top: $border;
     border-bottom: $border;
     height: auto;
-    padding: $gsm 0;
+    padding: $gsm;
     margin: $gsm 0;
     cursor: pointer;
     overflow: hidden;
+    position: relative;
+    transition: all 0.25s;
 
     .top {
       display: flex;
@@ -25,27 +27,54 @@
       }
     }
 
-    h4 {
-      max-height: 0;
-      transition: all 0.3s;
-      font-size: 1rem;
-      overflow: hidden;
+    .continue {
+      font-size: $xsm;
+      position: absolute;
+      bottom: 0;
+      right: $gsm;
       opacity: 0;
 
-      a {
-        display: inline;
-        font-size: inherit;
+      &.is--active {
+        opacity: 1;
+      }
+    }
+
+    .preview {
+      max-height: 0;
+      transition: all 0.25s;
+      font-size: $sm;
+      overflow: hidden;
+      white-space: pre-wrap;
+      opacity: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      h2,
+      p {
+        margin: $gsm 0;
+        width: 100%;
+      }
+
+      img {
+        padding: $gsm;
       }
 
       &.is--active {
         max-height: 24rem;
-        margin: 0.5rem 0;
+        margin: $gxlg 0;
         opacity: 1;
       }
     }
 
     &:hover {
-      background-color: $highlight;
+      padding-bottom: $glg;
+    }
+
+    &.is--active {
+      &:hover {
+        padding-bottom: $gsm;
+      }
     }
   }
 }

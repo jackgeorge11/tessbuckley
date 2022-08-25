@@ -3,6 +3,15 @@
   height: $height-layout;
   margin: $gmd;
 
+  .hamburger {
+    display: none;
+    padding: $gsm $gmd 0 0;
+
+    @include media {
+      display: block;
+    }
+  }
+
   .header,
   .footer {
     @include flex;
@@ -20,10 +29,6 @@
       margin: $gmd 0 0 $gmd;
     }
 
-    h1 {
-      font-weight: $thin;
-    }
-
     h4 {
       padding: 0 $gsm;
     }
@@ -33,6 +38,11 @@
     width: calc(100% - #{$width-nav});
     margin: $height-header 0 $gmd $width-nav;
     padding-top: $gmd;
+
+    @include media {
+      width: 100%;
+      margin: $height-header 0 $gmd 0;
+    }
   }
 
   .footer {

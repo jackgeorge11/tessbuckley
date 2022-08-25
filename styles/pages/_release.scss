@@ -1,0 +1,46 @@
+.release-page {
+  padding-bottom: $gxxlg;
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+      width: 20rem;
+      height: 20rem;
+      max-width: 50vw;
+      max-height: 50vw;
+      // border-bottom: $border;
+      border-right: $border;
+      padding-right: $gmd;
+    }
+
+    .palette {
+      margin: 0 $gmd 0 auto;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      // border-bottom: $border;
+      border-left: $border;
+      padding-left: $gmd;
+    }
+  }
+
+  iframe {
+    margin: $gxlg 0;
+    border-radius: 5px;
+  }
+
+  h2 {
+    margin: 0 0 $glg;
+  }
+
+  p {
+    margin: 0 0 $gmd;
+    font-size: $sm;
+  }
+}

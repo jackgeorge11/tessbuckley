@@ -1,0 +1,13 @@
+.about {
+  h2 {
+    margin: $gmd 0 $gsm;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  p {
+    margin: $gsm 0;
+  }
+}

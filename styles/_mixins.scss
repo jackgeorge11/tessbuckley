@@ -4,3 +4,9 @@
   justify-content: $jc;
   align-items: $ai;
 }
+
+@mixin media {
+  @media (max-width: $bp) {
+    @content;
+  }
+}

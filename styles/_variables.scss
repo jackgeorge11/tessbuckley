@@ -13,6 +13,14 @@ $xsm: 0.875rem;
 $xxsm: 0.75rem;
 
 $font-sizes: (
+  xlg: $xlg,
+  lg: $lg,
+  md: $md,
+  sm: $sm,
+  xsm: $xsm,
+);
+
+$header-sizes: (
   h1: $xlg,
   h2: $lg,
   h3: $md,
@@ -37,10 +45,12 @@ $muted: #e0e8d1;
 $highlight: #fffae6;
 $grey: rgb(218, 218, 218);
 $black: rgb(44, 44, 44);
+$transluscent: 0.35;
 
 // GUTTERS
 
-$gxlg: 2rem;
+$gxxlg: 3rem;
+$gxlg: 1.5rem;
 $glg: 1rem;
 $gmd: 0.5rem;
 $gsm: 0.25rem;
@@ -51,11 +61,16 @@ $gxsm: 0.15rem;
 $height-header: 3rem;
 
 $width-layout: calc(100vw - #{$gmd * 2});
-$height-layout: calc(100vh - #{$gmd * 2});
+$height-layout: calc(100vh - #{$gmd * 2} - #{$height-header});
 
 $width-nav: 18rem;
 $padding-nav: $glg;
 $nav-combined-width: calc(#{$width-nav} + #{$padding-nav});
 
 // BORDERS
-$border: 1px solid $black;
+
+$border-width: 1px;
+$border: $border-width solid $black;
+
+// RESPONSIVE VARIABLES
+$bp: 768px;

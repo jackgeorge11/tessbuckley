@@ -1,0 +1,24 @@
+.contact {
+  @include flex($fd: column, $jc: flex-start, $ai: flex-start);
+
+  input,
+  textarea {
+    margin-bottom: $gmd;
+    padding: 0;
+    font-size: $sm;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    font-family: $font-family;
+    font-size: $sm;
+    font-weight: $thick;
+    padding: 0;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
