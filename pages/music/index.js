@@ -1,15 +1,10 @@
 import Link from "next/link";
 import React from "react";
 import Layout from "../../components/Layout";
-import { createClient } from "contentful";
 import dayjs from "dayjs";
+import { client } from "../../tools/ContentfulClient";
 
 export async function getStaticProps() {
-  const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN,
-  });
-
   const releases = await client.getEntries({ content_type: "musicRelease" });
   const events = await client.getEntries({ content_type: "musicEvent" });
   const upcomingEvents = events.items
@@ -22,6 +17,7 @@ export async function getStaticProps() {
       releases: releases.items,
       events: upcomingEvents,
       blurb: blurb.description,
+      revalidate: 1,
     },
   };
 }

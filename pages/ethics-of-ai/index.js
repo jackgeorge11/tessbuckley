@@ -1,14 +1,9 @@
 import React from "react";
 import PostPreview from "../../components/PostPreview";
 import Layout from "../../components/Layout";
-import { createClient } from "contentful";
+import { client } from "../../tools/ContentfulClient";
 
 export async function getStaticProps() {
-  const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN,
-  });
-
   const posts = await client.getEntries({ content_type: "blogPost" });
   const blurb = await client.getContentType("blogPost");
 
@@ -16,6 +11,7 @@ export async function getStaticProps() {
     props: {
       posts: posts.items,
       blurb: blurb.description,
+      revalidate: 1,
     },
   };
 }

@@ -8,6 +8,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       blurb: items.blurbContact,
+      revalidate: 1,
     },
   };
 };

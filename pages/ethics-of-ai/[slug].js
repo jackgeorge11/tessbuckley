@@ -1,14 +1,9 @@
 import React from "react";
-import { createClient } from "contentful";
 import Layout from "../../components/Layout";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
 import dayjs from "dayjs";
-
-const client = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN,
-});
+import { client } from "../../tools/ContentfulClient";
 
 export const getStaticPaths = async () => {
   const res = await client.getEntries({ content_type: "blogPost" });
@@ -30,6 +25,7 @@ export const getStaticProps = async ({ params }) => {
 
   return {
     props: { post: items[0].fields },
+    revalidate: 1,
   };
 };
 

@@ -1,5 +1,4 @@
 import React from "react";
-import { createClient } from "contentful";
 import Layout from "../../components/Layout";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
@@ -26,6 +25,7 @@ export const getStaticProps = async ({ params }) => {
 
   return {
     props: { release: items[0].fields },
+    revalidate: 1,
   };
 };
 
