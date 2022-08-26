@@ -2,8 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
-export default function Nav({ children, open }) {
-  const path = useRouter().pathname.slice(1);
+export default function Nav({ children, open, path }) {
   return (
     <nav className={path === "" || open ? "is--open" : ""}>
       <h3>{children}</h3>

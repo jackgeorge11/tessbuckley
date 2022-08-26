@@ -51,7 +51,7 @@ export default function PostPreview({ post }) {
         {documentToReactComponents(post.blogBody, options)}
         {/* {postString.length > 1000 ? postString.slice(0, 1000) : postString}...{" "} */}
       </div>
-      <Link href="/ethics-of-ai/example" passHref={true}>
+      <Link href={`/ethics-of-ai/${post.slug}`} passHref={true}>
         <a
           className={expanded ? "is--active continue" : "continue"}
           onClick={(e) => e.stopPropagation()}

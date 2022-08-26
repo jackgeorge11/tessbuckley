@@ -1,16 +1,21 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import Nav from "./Nav";
+import { useRouter } from "next/router";
 
 export default function Layout({ children, header, className }) {
   const [open, setOpen] = useState(false);
+
+  const path = useRouter().pathname.slice(1);
 
   return (
     <div className="layout">
       <div className="header">
         <button
           className={
-            open
+            path === ""
+              ? "hidden"
+              : open
               ? "hamburger hamburger--arrowalt is-active"
               : "hamburger hamburger--arrowalt"
           }
@@ -28,7 +33,7 @@ export default function Layout({ children, header, className }) {
         </h1>
         <div className="line"></div>
       </div>
-      <Nav open={open} setOpen={setOpen}>
+      <Nav open={open} setOpen={setOpen} path={path}>
         {header}
       </Nav>
       <main className={className}>{children}</main>

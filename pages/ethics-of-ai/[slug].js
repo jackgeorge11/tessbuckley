@@ -56,8 +56,12 @@ export default function Post({ post }) {
         </p>
       </div>
       {documentToReactComponents(blogBody, options)}
-      <h2 className="references">References</h2>
-      {documentToReactComponents(references)}
+      {references ? (
+        <>
+          <h2 className="references">References</h2>
+          {documentToReactComponents(references)}
+        </>
+      ) : null}
     </Layout>
   );
 }
