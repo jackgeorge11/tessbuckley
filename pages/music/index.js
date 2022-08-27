@@ -9,14 +9,14 @@ export async function getStaticProps() {
   const events = await client.getEntries({ content_type: "musicEvent" });
   const upcomingEvents = events.items
     .filter((a) => dayjs().isBefore(a.fields.date))
-    .sort((a, b) => new Date(a.fields.date) - new Date(b.fields.date));
+    .sort((a, b) => dayjs(a.fields.date) - dayjs(b.fields.date));
   const blurb = await client.getContentType("musicRelease");
   const press = await client.getEntries({ content_type: "musicPress" });
   const sortedPress = press.items.sort(
-    (a, b) => new Date(a.fields.date) - new Date(b.fields.date)
+    (a, b) => dayjs(b.fields.date) - dayjs(a.fields.date)
   );
   const slicedPress =
-    sortedPress.length > 4 ? sortedPress.slice(0, 4) : sortedPress;
+    sortedPress.length > 3 ? sortedPress.slice(0, 3) : sortedPress;
 
   return {
     props: {

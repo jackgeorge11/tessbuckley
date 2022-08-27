@@ -9,11 +9,11 @@ export async function getStaticProps() {
   const blurb = await client.getContentType("musicEvent");
 
   const upcomingEvents = events.items
-    .sort((a, b) => new Date(a.fields.date) - new Date(b.fields.date))
+    .sort((a, b) => dayjs(a.fields.date) - dayjs(b.fields.date))
     .filter((a) => dayjs().isBefore(a.fields.date));
 
   const pastEvents = events.items
-    .sort((a, b) => new Date(b.fields.date) - new Date(a.fields.date))
+    .sort((a, b) => dayjs(b.fields.date) - dayjs(a.fields.date))
     .filter((a) => dayjs().isAfter(a.fields.date));
 
   return {

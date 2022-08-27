@@ -1,6 +1,8 @@
 .press-page {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+
   @include media {
     flex-direction: column;
     flex-wrap: nowrap;
@@ -9,8 +11,8 @@
   .piece {
     padding: $gsm;
     border: $border;
-    max-width: 50%;
-    margin: 0 $gsm $gmd 0;
+    max-width: calc(50% - #{$gsm});
+    margin: 0 0 $gmd 0;
 
     @include media {
       margin-right: 0;

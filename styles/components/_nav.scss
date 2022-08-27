@@ -42,5 +42,11 @@ nav {
   .socials {
     display: flex;
     align-items: center;
+    margin-top: $gmd;
+
+    .icon {
+      width: $sm;
+      margin-right: $gsm;
+    }
   }
 }

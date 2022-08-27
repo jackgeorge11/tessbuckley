@@ -1,4 +1,19 @@
 .about {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  * {
+    width: 100%;
+  }
+
+  img {
+    width: auto;
+    max-width: 100%;
+    max-height: 80vh;
+    padding: $gsm;
+  }
+
   h2 {
     margin: $gmd 0 $gsm;
 

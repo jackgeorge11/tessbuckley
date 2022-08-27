@@ -8,7 +8,7 @@ export async function getStaticProps() {
   const blurb = await client.getContentType("musicPress");
   const press = await client.getEntries({ content_type: "musicPress" });
   const sortedPress = press.items.sort(
-    (a, b) => new Date(a.fields.date) - new Date(b.fields.date)
+    (a, b) => dayjs(b.fields.date) - dayjs(a.fields.date)
   );
 
   return {

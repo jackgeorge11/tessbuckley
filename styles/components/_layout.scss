@@ -38,6 +38,7 @@
     width: calc(100% - #{$width-nav});
     margin: $height-header 0 $gmd $width-nav;
     padding-top: $gmd;
+    padding-bottom: $gxxlg;
 
     @include media {
       width: 100%;
