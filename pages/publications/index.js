@@ -11,8 +11,8 @@ export const getStaticProps = async ({ params }) => {
     props: {
       publications: publications.items,
       blurb: blurb.description,
-      revalidate: 1,
     },
+    revalidate: 1,
   };
 };
 

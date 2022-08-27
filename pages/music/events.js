@@ -22,8 +22,8 @@ export async function getStaticProps() {
       upcomingEvents: upcomingEvents,
       pastEvents: pastEvents,
       blurb: blurb.description,
-      revalidate: 1,
     },
+    revalidate: 1,
   };
 }
 

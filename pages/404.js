@@ -8,8 +8,8 @@ export const getStaticProps = async () => {
   return {
     props: {
       blurb: items.blurb404,
-      revalidate: 1,
     },
+    revalidate: 1,
   };
 };
 

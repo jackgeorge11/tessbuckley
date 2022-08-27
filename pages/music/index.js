@@ -17,8 +17,8 @@ export async function getStaticProps() {
       releases: releases.items,
       events: upcomingEvents,
       blurb: blurb.description,
-      revalidate: 1,
     },
+    revalidate: 1,
   };
 }
 

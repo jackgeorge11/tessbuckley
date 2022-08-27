@@ -11,8 +11,8 @@ export async function getStaticProps() {
     props: {
       posts: posts.items,
       blurb: blurb.description,
-      revalidate: 1,
     },
+    revalidate: 1,
   };
 }
 
