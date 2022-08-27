@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import React from "react";
 
 export default function Nav({ children, open, path }) {
@@ -37,6 +36,9 @@ export default function Nav({ children, open, path }) {
         </Link>
       </h4>
       <p className="--muted thin">© 2022 by Tess Buckley</p>
+      <div className="socials">
+        {/* <img src="/linkedin.png" alt="LinkedIn Logo" /> */}
+      </div>
     </nav>
   );
 }

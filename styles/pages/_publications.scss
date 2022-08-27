@@ -8,9 +8,11 @@
     font-size: 1rem;
     padding: 0 calc(#{$glg} - #{$border-width}) $gxlg $gxlg;
     width: 50%;
-    text-align: justify;
-    text-justify: distribute;
+    // text-align: justify;
+    // text-justify: distribute;
+    word-wrap: unset;
     border-right: $border;
+    overflow-wrap: break-word;
 
     p {
       font-size: inherit;
