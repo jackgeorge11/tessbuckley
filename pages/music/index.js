@@ -11,22 +11,29 @@ export async function getStaticProps() {
     .filter((a) => dayjs().isBefore(a.fields.date))
     .sort((a, b) => new Date(a.fields.date) - new Date(b.fields.date));
   const blurb = await client.getContentType("musicRelease");
+  const press = await client.getEntries({ content_type: "musicPress" });
+  const sortedPress = press.items.sort(
+    (a, b) => new Date(a.fields.date) - new Date(b.fields.date)
+  );
+  const slicedPress =
+    sortedPress.length > 4 ? sortedPress.slice(0, 4) : sortedPress;
 
   return {
     props: {
       releases: releases.items,
       events: upcomingEvents,
+      press: slicedPress,
       blurb: blurb.description,
     },
     revalidate: 1,
   };
 }
 
-export default function Index({ releases, events, blurb }) {
+export default function Index({ releases, events, blurb, press }) {
   return (
     <Layout className="music" header={blurb}>
-      <div className="events">
-        <div className="events-header">
+      <div className="banner">
+        <div className="banner-header">
           <h3>Upcoming Events</h3>
           <p>
             (
@@ -36,7 +43,7 @@ export default function Index({ releases, events, blurb }) {
             )
           </p>
         </div>
-        <div className="events-list">
+        <div className="banner-list">
           {events.length ? (
             events?.map((e, i) => (
               <div className="event" key={i}>
@@ -58,6 +65,45 @@ export default function Index({ releases, events, blurb }) {
                 No upcoming events.{" "}
                 <Link href="/music/events" passhref={true}>
                   <a>See past events</a>
+                </Link>
+              </h4>
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="banner">
+        <div className="banner-header">
+          <h3>Recent Press</h3>
+          <p>
+            (
+            <Link href="/music/press" passHref={true}>
+              <a>see all press</a>
+            </Link>
+            )
+          </p>
+        </div>
+        <div className="banner-list">
+          {press.length ? (
+            press?.map((e, i) => (
+              <div className="event" key={i}>
+                <a
+                  href={e.fields.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {e.fields.title}
+                </a>
+                <p className="--muted">
+                  {dayjs(e.fields.date).format("MMMM DD, YYYY")}
+                </p>
+              </div>
+            ))
+          ) : (
+            <div className="event">
+              <h4>
+                No recent press.{" "}
+                <Link href="/music/press" passhref={true}>
+                  <a>See all press</a>
                 </Link>
               </h4>
             </div>

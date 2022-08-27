@@ -1,5 +1,4 @@
 import React from "react";
-import { createClient } from "contentful";
 import Layout from "../../components/Layout";
 import Link from "next/link";
 import dayjs from "dayjs";
@@ -27,7 +26,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function events({ upcomingEvents, pastEvents, blurb }) {
+export default function Events({ upcomingEvents, pastEvents, blurb }) {
   return (
     <Layout header={blurb} className={"events-page"}>
       <div className="events-column left">

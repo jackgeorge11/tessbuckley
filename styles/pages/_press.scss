@@ -1,0 +1,31 @@
+.press-page {
+  display: flex;
+  flex-wrap: wrap;
+  @include media {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .piece {
+    padding: $gsm;
+    border: $border;
+    max-width: 50%;
+    margin: 0 $gsm $gmd 0;
+
+    @include media {
+      margin-right: 0;
+      width: fit-content;
+      max-width: 100%;
+    }
+
+    p {
+      margin-top: $gsm;
+      font-size: $sm;
+
+      &.--muted {
+        font-size: $xsm;
+        margin: 0;
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 .music {
-  .events {
+  .banner {
     border-bottom: $border;
     border-top: $border;
     padding: $gmd 0;
@@ -12,7 +12,7 @@
       }
     }
 
-    .events-header {
+    .banner-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
@@ -33,7 +33,7 @@
       }
     }
 
-    .events-list {
+    .banner-list {
       display: flex;
       max-width: 100%;
       flex-wrap: wrap;
