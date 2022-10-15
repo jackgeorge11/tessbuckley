@@ -46,6 +46,7 @@ const options = {
 export default function Post({ release }) {
   const {
     blurb,
+    slug,
     title,
     type,
     year,
