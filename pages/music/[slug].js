@@ -69,7 +69,7 @@ export default function Post({ release }) {
         url={`https://tessbuckley.me/blog/${slug}`}
         description={seoDescription}
         type="article"
-        image={seoImage.fields.file.url}
+        image={cover?.fields.file.url}
       />
       <div className="top">
         <img src={cover.fields.file.url} alt="" />

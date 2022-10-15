@@ -69,7 +69,7 @@ export default function Post({ post }) {
         url={`https://tessbuckley.me/blog/${slug}`}
         description={seoDescription}
         type="article"
-        image={seoImage.fields.file.url}
+        image={seoImage?.fields.file.url}
       />
       <div className="post-info">
         <h1 className="title">{blogTitle}</h1>
