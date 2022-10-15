@@ -14,7 +14,7 @@ export const getStaticProps = async () => {
   };
 };
 
-export default function Contact({ blurb }) {
+export default function Contact({ blurb, description }) {
   return (
     <Layout header={blurb} description={description} title="Contact">
       <form className="contact" action="" method="POST">
