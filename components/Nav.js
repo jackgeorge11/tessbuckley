@@ -3,13 +3,11 @@ import React from "react";
 
 export default function Nav({ children, open, path }) {
   return (
-    <nav className={path === "" || open ? "is--open" : ""}>
+    <nav className={open ? "is--open" : ""}>
       <h3>{children}</h3>
       <h4>
-        <Link href="/ethics-of-ai" passHref={true}>
-          <a className={path === "ethics-of-ai" ? "disabled" : ""}>
-            Ethics of AI
-          </a>
+        <Link href="/blog" passHref={true}>
+          <a className={path === "blog" ? "disabled" : ""}>Blog</a>
         </Link>
       </h4>
       <h4>
@@ -17,6 +15,11 @@ export default function Nav({ children, open, path }) {
           <a className={path === "publications" ? "disabled" : ""}>
             Publications
           </a>
+        </Link>
+      </h4>
+      <h4>
+        <Link href="/resources" passHref={true}>
+          <a className={path === "resources" ? "disabled" : ""}>Resources</a>
         </Link>
       </h4>
       <h4>

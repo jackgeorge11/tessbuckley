@@ -2,10 +2,10 @@ import React from "react";
 import Layout from "../../components/Layout";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import dayjs from "dayjs";
-import { client } from "../../tools/ContentfulClient";
+import { client, staticPages } from "../../tools/ContentfulClient";
 
 export async function getStaticProps() {
-  const blurb = await client.getContentType("musicPress");
+  const blurbs = await staticPages();
   const press = await client.getEntries({ content_type: "musicPress" });
   const sortedPress = press.items.sort(
     (a, b) => dayjs(b.fields.date) - dayjs(a.fields.date)
@@ -14,15 +14,21 @@ export async function getStaticProps() {
   return {
     props: {
       press: sortedPress,
-      blurb: blurb.description,
+      blurb: blurbs.blurbPress || null,
+      description: blurbs.seoDescriptionPress || null,
     },
-    revalidate: 1,
+    revalidate: 60,
   };
 }
 
-export default function Events({ press, blurb }) {
+export default function Events({ press, blurb, description }) {
   return (
-    <Layout header={blurb} className={"press-page"}>
+    <Layout
+      header={blurb}
+      className={"press-page"}
+      title="Press"
+      description={description}
+    >
       {press?.length ? (
         press.map((p, i) => (
           <div className="piece" key={i}>

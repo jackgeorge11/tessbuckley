@@ -51,12 +51,15 @@ a {
   opacity: $transluscent;
 }
 
-a {
+a,
+.--a {
   color: black;
   text-decoration: none;
   font-weight: $thick;
-  transition: all 0.15s;
+  transition: all $short;
   font-size: inherit;
+  width: fit-content;
+  cursor: pointer;
 
   &:hover {
     text-decoration: underline;

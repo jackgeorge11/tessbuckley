@@ -10,7 +10,7 @@ const options = {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       return (
         <img
-          src={`https://${node.data.target.fields.file.url}`}
+          src={node.data.target.fields.file.url}
           alt={node.data.target.fields.description}
         />
       );
@@ -33,7 +33,7 @@ export default function PostPreview({ post }) {
       <div className="top">
         <div className="info">
           <h2>
-            <Link href={`ethics-of-ai/${post.slug}`} passHref={true}>
+            <Link href={`/blog/${post.slug}`} passHref={true}>
               <a onClick={(e) => e.stopPropagation()}>{post.blogTitle}</a>
             </Link>
           </h2>
@@ -51,7 +51,7 @@ export default function PostPreview({ post }) {
         {documentToReactComponents(post.blogBody, options)}
         {/* {postString.length > 1000 ? postString.slice(0, 1000) : postString}...{" "} */}
       </div>
-      <Link href={`/ethics-of-ai/${post.slug}`} passHref={true}>
+      <Link href={`/blog/${post.slug}`} passHref={true}>
         <a
           className={expanded ? "is--active continue" : "continue"}
           onClick={(e) => e.stopPropagation()}

@@ -2,20 +2,32 @@ import Link from "next/link";
 import React, { useState } from "react";
 import Nav from "./Nav";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
-export default function Layout({ children, header, className }) {
+export default function Layout({
+  children,
+  header,
+  className,
+  title,
+  description,
+  additional,
+  openGraphTags,
+}) {
   const [open, setOpen] = useState(false);
 
   const path = useRouter().pathname.slice(1);
 
   return (
     <div className="layout">
+      <Head>
+        <title>{title ? `${title} | Tess Buckley` : "Tess Buckley"}</title>
+        {description ? <meta name="description" content={description} /> : null}
+        {additional?.length ? additional.map((tag) => tag) : null}
+      </Head>
       <div className="header">
         <button
           className={
-            path === ""
-              ? "hidden"
-              : open
+            open
               ? "hamburger hamburger--arrowalt is-active"
               : "hamburger hamburger--arrowalt"
           }

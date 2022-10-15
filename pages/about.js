@@ -9,10 +9,11 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      blurb: items.blurbAbout,
-      about: items.aboutDescription,
+      blurb: items.blurbAbout || null,
+      about: items.aboutDescription || null,
+      description: items.seoDescriptionAbout || null,
     },
-    revalidate: 1,
+    revalidate: 60,
   };
 };
 
@@ -21,7 +22,7 @@ const options = {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       return (
         <img
-          src={`https://${node.data.target.fields.file.url}`}
+          src={node.data.target.fields.file.url}
           alt={node.data.target.fields.description}
         />
       );
@@ -29,9 +30,14 @@ const options = {
   },
 };
 
-export default function About({ about, blurb }) {
+export default function About({ about, blurb, description }) {
   return (
-    <Layout header={blurb} className="about">
+    <Layout
+      header={blurb}
+      className="about"
+      title="About"
+      description={description}
+    >
       {documentToReactComponents(about, options)}
     </Layout>
   );

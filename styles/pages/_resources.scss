@@ -1,0 +1,18 @@
+.resources-page {
+  .resource {
+    margin-bottom: $gxlg;
+    .resource-title {
+      display: flex;
+      align-items: center;
+      margin-bottom: $gsm;
+
+      .line {
+        flex: 1;
+        margin-left: $gmd;
+        min-width: $sm;
+        content: "";
+        border-top: $border;
+      }
+    }
+  }
+}

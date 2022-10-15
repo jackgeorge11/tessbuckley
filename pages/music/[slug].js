@@ -4,6 +4,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS } from "@contentful/rich-text-types";
 import { MemoizedPalette } from "../../components/Palette";
 import { client } from "../../tools/ContentfulClient";
+import OpenGraphTags from "../../components/OpenGraphTags";
 
 export const getStaticPaths = async () => {
   const res = await client.getEntries({ content_type: "musicRelease" });
@@ -25,7 +26,7 @@ export const getStaticProps = async ({ params }) => {
 
   return {
     props: { release: items[0].fields },
-    revalidate: 1,
+    revalidate: 60,
   };
 };
 
@@ -34,7 +35,7 @@ const options = {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       return (
         <img
-          src={`https://${node.data.target.fields.file.url}`}
+          src={node.data.target.fields.file.url}
           alt={node.data.target.fields.description}
         />
       );
@@ -53,13 +54,25 @@ export default function Post({ release }) {
     feat,
     description,
     cover,
+    seoDescription,
   } = release;
 
-  console.log(cover);
   return (
-    <Layout header={blurb} className="release-page">
+    <Layout
+      header={blurb}
+      className="release-page"
+      title={title}
+      description={seoDescription}
+    >
+      <OpenGraphTags
+        title={title}
+        url={`https://tessbuckley.me/blog/${slug}`}
+        description={seoDescription}
+        type="article"
+        image={seoImage.fields.file.url}
+      />
       <div className="top">
-        <img src={`https://${cover.fields.file.url}`} alt="" />
+        <img src={cover.fields.file.url} alt="" />
         <MemoizedPalette vertical={true} />
         <div className="info">
           <h1>{title}</h1>

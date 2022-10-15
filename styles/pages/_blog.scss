@@ -1,0 +1,122 @@
+.blog-page {
+  @include flex($jc: flex-end, $ai: flex-start);
+  flex-direction: column;
+
+  .tab-nav {
+    display: flex;
+    margin-bottom: $gmd;
+    align-items: flex-end;
+
+    .tab {
+      padding: $gsm $gmd;
+      border: $border;
+      cursor: pointer;
+      transition: all $long;
+      margin-right: -1px;
+
+      h4 {
+        @include media {
+          font-size: $xsm;
+        }
+      }
+
+      &:hover {
+        padding: $gmd $gmd;
+      }
+
+      &.is--active {
+        border-bottom-color: transparent;
+        padding: $gmd $gmd;
+
+        h4 {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .tab-list {
+    display: none;
+    width: 100%;
+
+    &.is--active {
+      display: block;
+    }
+
+    .post-preview {
+      width: 100%;
+      border-top: $border;
+      border-bottom: $border;
+      height: auto;
+      padding: $gsm;
+      margin: $gsm 0;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      transition: all $long;
+
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        a {
+          width: fit-content;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .continue {
+        font-size: $xsm;
+        position: absolute;
+        bottom: 0;
+        right: $gsm;
+        opacity: 0;
+
+        &.is--active {
+          opacity: 1;
+        }
+      }
+
+      .preview {
+        max-height: 0;
+        transition: all $long;
+        font-size: $sm;
+        overflow: hidden;
+        white-space: pre-wrap;
+        opacity: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        h2,
+        p {
+          margin: $gsm 0;
+          width: 100%;
+        }
+
+        img {
+          padding: $gsm;
+        }
+
+        &.is--active {
+          max-height: 24rem;
+          margin: $gxlg 0;
+          opacity: 1;
+        }
+      }
+
+      &:hover {
+        padding-bottom: $glg;
+      }
+
+      &.is--active {
+        &:hover {
+          padding-bottom: $gsm;
+        }
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import Layout from "../../components/Layout";
 import dayjs from "dayjs";
-import { client } from "../../tools/ContentfulClient";
+import { client, staticPages } from "../../tools/ContentfulClient";
 
 export async function getStaticProps() {
   const releases = await client.getEntries({ content_type: "musicRelease" });
@@ -10,7 +10,7 @@ export async function getStaticProps() {
   const upcomingEvents = events.items
     .filter((a) => dayjs().isBefore(a.fields.date))
     .sort((a, b) => dayjs(a.fields.date) - dayjs(b.fields.date));
-  const blurb = await client.getContentType("musicRelease");
+  const blurbs = await staticPages();
   const press = await client.getEntries({ content_type: "musicPress" });
   const sortedPress = press.items.sort(
     (a, b) => dayjs(b.fields.date) - dayjs(a.fields.date)
@@ -23,15 +23,16 @@ export async function getStaticProps() {
       releases: releases.items,
       events: upcomingEvents,
       press: slicedPress,
-      blurb: blurb.description,
+      blurb: blurbs.blurbMusic || null,
+      description: blurbs.seoDescriptionMusic || null,
     },
-    revalidate: 1,
+    revalidate: 60,
   };
 }
 
-export default function Index({ releases, events, blurb, press }) {
+export default function Index({ releases, events, blurb, press, description }) {
   return (
-    <Layout className="music" header={blurb}>
+    <Layout className="music" header={blurb} title="Music">
       <div className="banner">
         <div className="banner-header">
           <h3>Upcoming Events</h3>

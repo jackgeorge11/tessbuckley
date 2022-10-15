@@ -4,6 +4,8 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS } from "@contentful/rich-text-types";
 import dayjs from "dayjs";
 import { client } from "../../tools/ContentfulClient";
+import OpenGraphTags from "../../components/OpenGraphTags";
+import Helmet from "react-helmet";
 
 export const getStaticPaths = async () => {
   const res = await client.getEntries({ content_type: "blogPost" });
@@ -25,7 +27,7 @@ export const getStaticProps = async ({ params }) => {
 
   return {
     props: { post: items[0].fields },
-    revalidate: 1,
+    revalidate: 60,
   };
 };
 
@@ -34,7 +36,7 @@ const options = {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       return (
         <img
-          src={`https://${node.data.target.fields.file.url}`}
+          src={node.data.target.fields.file.url}
           alt={node.data.target.fields.description}
         />
       );
@@ -43,10 +45,32 @@ const options = {
 };
 
 export default function Post({ post }) {
-  const { blurb, date, blogTitle, blogBody, references, accreditation } = post;
+  const {
+    slug,
+    blurb,
+    date,
+    blogTitle,
+    blogBody,
+    references,
+    accreditation,
+    seoDescription,
+    seoImage,
+  } = post;
 
   return (
-    <Layout header={blurb} className="post-page">
+    <Layout
+      header={blurb}
+      className="post-page"
+      title={blogTitle}
+      description={seoDescription}
+    >
+      <OpenGraphTags
+        title={blogTitle}
+        url={`https://tessbuckley.me/blog/${slug}`}
+        description={seoDescription}
+        type="article"
+        image={seoImage.fields.file.url}
+      />
       <div className="post-info">
         <h1 className="title">{blogTitle}</h1>
         <p className="accreditation">

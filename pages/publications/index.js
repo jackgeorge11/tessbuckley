@@ -1,23 +1,22 @@
 import React from "react";
 import Layout from "../../components/Layout";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { client } from "../../tools/ContentfulClient";
+import { client, staticPages } from "../../tools/ContentfulClient";
 
 export const getStaticProps = async ({ params }) => {
   const publications = await client.getEntries({ content_type: "publication" });
-  const blurb = await client.getContentType("publication");
+  const blurbs = await staticPages();
 
   return {
     props: {
       publications: publications.items,
-      blurb: blurb.description,
+      blurb: blurbs.publications || null,
     },
-    revalidate: 1,
+    revalidate: 60,
   };
 };
 
 export default function Index({ publications, blurb }) {
-  console.log(publications);
   return (
     <Layout header={blurb} className="publications">
       {publications?.length ? (

@@ -9,13 +9,18 @@ export const getStaticProps = async () => {
     props: {
       blurb: items.blurb404,
     },
-    revalidate: 1,
+    revalidate: 60,
   };
 };
 
 export default function fourOhFour({ blurb }) {
   return (
-    <Layout header={blurb} className="page-not-found">
+    <Layout
+      header={blurb}
+      className="page-not-found"
+      title="404"
+      additional={[<meta name="robots" content="noindex" key={0} />]}
+    >
       <h4>404{"   "}</h4>
       <p className="--muted">(page not found)</p>
     </Layout>

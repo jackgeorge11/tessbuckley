@@ -7,15 +7,16 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      blurb: items.blurbContact,
+      blurb: items.blurbContact || null,
+      description: items.seoDescriptionContact || null,
     },
-    revalidate: 1,
+    revalidate: 60,
   };
 };
 
 export default function Contact({ blurb }) {
   return (
-    <Layout header={blurb}>
+    <Layout header={blurb} description={description} title="Contact">
       <form className="contact" action="" method="POST">
         <input type="text" placeholder="Name" />
         <input type="text" placeholder="Email" />
