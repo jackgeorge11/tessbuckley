@@ -5,7 +5,6 @@ import { BLOCKS } from "@contentful/rich-text-types";
 import dayjs from "dayjs";
 import { client } from "../../tools/ContentfulClient";
 import OpenGraphTags from "../../components/OpenGraphTags";
-import Helmet from "react-helmet";
 
 export const getStaticPaths = async () => {
   const res = await client.getEntries({ content_type: "blogPost" });
@@ -16,7 +15,7 @@ export const getStaticPaths = async () => {
     };
   });
 
-  return { paths, fallback: false };
+  return { paths, fallback: "blocking" };
 };
 
 export const getStaticProps = async ({ params }) => {

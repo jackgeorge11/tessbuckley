@@ -21,7 +21,7 @@ const options = {
 export default function PostPreview({ post }) {
   const [expanded, setExpanded] = useState(false);
 
-  const postString = post.blogBody.content.reduce((words, e) => {
+  const postString = post.blogBody?.content.reduce((words, e) => {
     return words + e.content[0]?.value + "\n\n";
   }, "");
 
