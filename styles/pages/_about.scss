@@ -1,25 +1,28 @@
 .about {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
   * {
     width: 100%;
   }
 
   img {
     width: 100%;
-    max-width: 10rem;
-    // max-height: 80vh;
-    padding: 0 $gmd $gsm 0;
-    float: left;
-
-    @include media {
-      width: 100%;
-    }
+    max-width: 20rem;
+    max-height: 20rem;
+    margin: 0 0 $gsm;
   }
 
   h2 {
-    margin: 0 0 $gmd;
+    margin: $gmd 0 $gsm;
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 
   p {
-    margin: 0 0 $gmd;
+    margin: $gsm 0;
   }
 }

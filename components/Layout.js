@@ -11,7 +11,6 @@ export default function Layout({
   title,
   description,
   additional,
-  openGraphTags,
 }) {
   const [open, setOpen] = useState(false);
 
